@@ -1,0 +1,157 @@
+
+<style>
+.navbar {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.11);
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  padding: 0.9rem 1.4rem;
+}
+
+/* Brand logo and title */
+.brand-logo {
+  height: 38px;
+  width: 38px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: transform 0.2s;
+}
+
+.brand-title {
+  color: #ff385c;
+  font-size: 1.7rem;
+  font-weight: bold;
+  letter-spacing: -1px;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.navbar-brand:hover .brand-logo {
+  transform: scale(1.07) rotate(-3deg);
+}
+
+/* Nav links */
+.navbar-nav .nav-link {
+  color: #333;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+  color: #000;
+}
+
+/* Active link highlight */
+.navbar-nav .nav-link.active {
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
+  color: white !important;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* Mobile toggle icon */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .navbar {
+    border-radius: 0;
+    padding: 0.7rem 1rem;
+  }
+  .brand-title {
+    font-size: 1.3rem;
+  }
+  .brand-logo {
+    height: 30px;
+    width: 30px;
+  }
+}
+/* form[role="search"] input {
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease-in-out;
+}
+
+form[role="search"] input:focus {
+  box-shadow: 0 0 10px rgba(210, 55, 20, 0.3);
+  border-color: #e11709;
+} */
+ form.d-flex.ms-auto.rounded {
+  padding: 0.5rem;
+  background-color: #fff;
+  border-radius: 2rem;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-control.rounded-pill.shadow-sm {
+  border: none;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.3);
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+}
+.form-control.rounded-pill.shadow-sm:focus {
+  box-shadow: 0 4px 12px rgba(16, 14, 14, 0.15);
+  outline: none;
+}
+.form-control.rounded-pill.shadow-sm::placeholder {
+  color: #585a5d;
+  /* font-style: italic; */
+}
+
+
+</style>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
+  <a class="navbar-brand d-flex align-items-center" href="/listings">
+    <span class="brand-title ms-2">TravelGeeks</span>
+  </a>
+
+  <!-- Centered Search Bar -->
+  
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <form class="d-flex ms-auto rounded-pill" role="search" style="width: 50%; height: 50px;" method="get" action="/listings/search">
+  <input class="form-control rounded-pill me-4 shadow-sm" type="search"  name="q" placeholder="Search destinations..." aria-label="Search">
+</form>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/listings">Explore</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/listings/new">Airbnb Your Home</a>
+      </li>
+      <% if(!currUser) { %>
+      <li class="nav-item">
+        <a class="nav-link" href="/signup"><b>Signup</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login"><b>Login</b></a>
+      </li>
+      <% } %>
+      <% if(currUser) { %>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout"><b>Logout</b></a>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,92 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <h3 class="mb-4">Edit your Listing</h3>
+        <form action="/listings/<%= listing._id %>?_method=PUT" method="POST" class="shadow p-4 rounded bg-light needs-validation" novalidate enctype="multipart/form-data">
+          <!-- Title -->
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input name="listing[title]" id="title" value="<%= listing.title || '' %>" type="text" class="form-control" required>
+            <div class="invalid-feedback">Please provide a title.</div>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <!-- Description -->
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" id="description" class="form-control" rows="2" required><%= listing.description || '' %></textarea>
+            <div class="invalid-feedback">Please provide a description.</div>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <!-- Image URL -->
+           <div class="mb-3">
+  <label for="img">Original Listing Image</label>
+  <br>
+  <img src="<%= originalImageUrl %>" alt="Original Listing" class="img-fluid rounded" style="max-width: 150px;">
+</div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Upload New Image </label>
+            <input type="file" name="listing[image]" id="image"  class="form-control">
+          </div>
+          <div class="mb-3">
+  <label for="category" class="form-label">Listing Category</label>
+  <select name="listing[category]" id="category" class="form-control" required>
+    <option value="Rooms" selected>Rooms</option>
+    <option value="Iconic cities">Iconic cities</option>
+    <option value="Mountains">Mountains</option>
+    <option value="Castles">Castles</option>
+    <option value="Pools">Pools</option>
+    <option value="Camping">Camping</option>
+    <option value="Farms">Farms</option>
+    <option value="Arctic">Arctic</option>
+    <option value="Beachside">Beachside</option>
+  </select>
+  <div class="invalid-feedback">Please select a category.</div>
+</div>
+          <!-- Price and Country -->
+          <div class="row mb-3">
+            <div class="col">
+              <label for="price" class="form-label">Price (₹)</label>
+              <input type="number" name="listing[price]" id="price" value="<%= listing.price || '' %>" class="form-control" required>
+              <div class="invalid-feedback">Please provide a price.</div>
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col">
+              <label for="country" class="form-label">Country</label>
+              <input type="text" name="listing[country]" id="country" value="<%= listing.country || '' %>" class="form-control">
+            </div>
+          </div>
+          <!-- Location -->
+          <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" name="listing[location]" id="location" value="<%= listing.location || '' %>" class="form-control" required>
+            <div class="invalid-feedback">Please provide a location.</div>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <!-- Submit Button -->
+          <div>
+            <button type="submit" class="btn btn-danger px-4">Update Listing</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap validation script -->
+  <script>
+    (() => {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.prototype.slice.call(forms).forEach((form) => {
+        form.addEventListener('submit', (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+</body>

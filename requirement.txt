@@ -1,0 +1,8 @@
+Form Validation
+
+When we enter the data in the form, the browser and/or the web server will check to see that the data is in the correct format and within the constraint set by the application.
+
+Client side validations
+
+
+the newer version of try catch is wrap async, same function but different 

@@ -1,0 +1,93 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <h3 class="mb-4">Enter New Listing</h3>
+        <form action="/listings" method="post" class="shadow p-4 rounded bg-light needs-validation" novalidate enctype="multipart/form-data">
+          <!-- Title -->
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input name="listing[title]" id="title" placeholder="Enter Title" type="text" class="form-control" required>
+            <div class="invalid-feedback">Please provide a title.</div>
+            <div class="valid-feedback">Good to go.</div>
+          </div>
+          <!-- Description -->
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" id="description" placeholder="Enter Description" class="form-control" rows="3" required></textarea>
+            <div class="invalid-feedback">Please provide a description.</div>
+            <div class="valid-feedback">Looks nice.</div>
+          </div>
+          <!-- Category -->
+           <!-- Category -->
+<div class="mb-3">
+  <label for="category" class="form-label">Listing Category</label>
+  <select name="listing[category]" id="category" class="form-control" required>
+    <option value="Rooms" selected>Rooms</option>
+    <option value="Iconic cities">Iconic cities</option>
+    <option value="Mountains">Mountains</option>
+    <option value="Castles">Castles</option>
+    <option value="Pools">Pools</option>
+    <option value="Camping">Camping</option>
+    <option value="Farms">Farms</option>
+    <option value="Arctic">Arctic</option>
+    <option value="Beachside">Beachside</option>
+  </select>
+  <div class="invalid-feedback">Please select a category.</div>
+</div>
+          <!-- Image URL -->
+          <!-- <div class="mb-3">
+            <label for="image" class="form-label">Image URL</label>
+            <input type="text" name="listing[image]" id="image" placeholder="Enter Image URL or Link" class="form-control">
+          </div> -->
+          <div class="mb-3">
+            <label for="image" class="form-label" >Upload Listing Image</label>
+            <input type="file" name="listing[image]" id="image" class="form-control">
+          </div>
+          <!-- Price -->
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" name="listing[price]" id="price" placeholder="Enter Price" class="form-control" required>
+            <div class="invalid-feedback">Please provide a price.</div>
+          </div>
+          <!-- Country -->
+          <div class="mb-3">
+            <label for="country" class="form-label">Country</label>
+            <input type="text" name="listing[country]" id="country" placeholder="Enter Country" class="form-control" required>
+            <div class="invalid-feedback">Please provide a valid country.</div>
+
+          </div>
+          <!-- Location -->
+          <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" name="listing[location]" id="location" placeholder="Enter Location" class="form-control" required>
+            <div class="invalid-feedback">Please provide a valid location.</div>
+          <div class="valid-feedback">Kindly Double check.</div>
+          </div>
+          <!-- Submit Button -->
+          <div class="r-grid newsubmit">
+            <button type="submit" class="btn btn-danger">Add Listing</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add this script at the end of your body -->
+  <script>
+    (() => {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.prototype.slice.call(forms).forEach((form) => {
+        form.addEventListener('submit', (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+</body>

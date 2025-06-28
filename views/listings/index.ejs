@@ -1,0 +1,78 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <!-- <h1>All Listings</h1> -->
+  <!-- <form action="/listings/new" method="GET">
+    <button>Create new Listing</button>
+  </form> -->
+  <div id="filters">
+  <a href="/listings" class="filter">
+    <div class="icon-box"><i class="fa-solid fa-fire"></i></div>
+    <p>Trending</p>
+  </a>
+  <a href="/listings?category=Rooms" class="filter <%= category === 'Rooms' ? 'active' : '' %>">
+    <div class="icon-box"><i class="fa-solid fa-bed"></i></div>
+    <p>Rooms</p>
+  </a>
+  <a href="/listings?category=Iconic cities" class="filter <%= category === 'Iconic cities' ? 'active' : '' %>">
+    <div class="icon-box"><i class="fa-solid fa-mountain-city"></i></div>
+    <p>Iconic Cities</p>
+  </a>
+  <a href="/listings?category=Mountains" class="filter <%= category === 'Mountains' ? 'active' : '' %>">
+    <div class="icon-box"><i class="fa-solid fa-mountain"></i></div>
+    <p>Mountains</p>
+  </a>
+  <a href="/listings?category=Castles" class="filter <%= category === 'Castles' ? 'active' : '' %>">
+    <div class="icon-box"><i class="fa-brands fa-fort-awesome"></i></div>
+    <p>Castles</p>
+  </a>
+  <a href="/listings?category=Pools" class="filter <%= category === 'Pools' ? 'active' : '' %>">
+    <div class="icon-box"><i class="fa-solid fa-person-swimming"></i></div>
+    <p>Amazing Pools</p>
+  </a>
+  <a href="/listings?category=Camping" class="filter <%= category === 'Camping' ? 'active' : '' %>"">
+    <div class="icon-box"><i class="fa-solid fa-campground"></i></div>
+    <p>Camping</p>
+  </a>
+  <a href="/listings?category=Farms" class="filter <%= category === 'Farms' ? 'active' : '' %>"">
+    <div class="icon-box"><i class="fa-solid fa-cow"></i></div>
+    <p>Farms</p>
+  </a>
+  <a href="/listings?category=Arctic" class="filter <%= category === 'Arctic' ? 'active' : '' %>"">
+    <div class="icon-box"><i class="fa-solid fa-snowflake"></i></div>
+    <p>Arctic</p>
+  </a>
+  <a href="/listings?category=Beachside" class="filter <%= category === 'Beachside' ? 'active' : '' %>"">
+    <div class="icon-box"><i class="fa-solid fa-umbrella-beach"></i></div>
+    <p>Beachside</p>
+  </a>
+</div>
+
+
+  <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-4 mt-3">
+    <% for(let listing of listings){ %>
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+          <a href="/listings/<%= listing._id %>">
+            <img src="<%= listing.image.url %>" class="card-img-top rounded" alt="<%= listing.title %>" style="height: 220px; object-fit: cover;">
+          </a>
+          <div class="card-body p-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+  <h5 class="card-title mb-0"><b><%= listing.title %></b></h5>
+  <span class="category-badge"><%= listing.category %></span>
+</div>
+            <p class="card-text text-muted mb-1"><%= listing.location %>, <%= listing.country %></p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="price fs-5 fw-bold">
+                <% if (listing.price !== undefined && listing.price !== null && !isNaN(listing.price)) { %>
+                  ₹<%= Number(listing.price).toLocaleString("en-IN") %>/night
+                <% } else { %>
+                  Price not set
+                <% } %>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</body>

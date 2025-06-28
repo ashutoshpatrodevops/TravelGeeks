@@ -1,0 +1,31 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-4">
+  <div class="col-12 text-center mb-4">
+    <h4 class="display-8 fw-bold text-danger">Welcome Back to TravelGeeks</h4>
+    <p class="text-muted">Ready for your next adventure?</p>
+  </div>
+  <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
+    <form action="/login" method="POST" class="needs-validation shadow rounded-4 p-4 bg-white" novalidate>
+      <div class="mb-4">
+        <label for="loginUsername" class="form-label fw-medium">Username or Email</label>
+        <input type="text" class="form-control form-control-lg" id="loginUsername" name="username" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter your username or email.</div>
+      </div>
+      <div class="mb-4">
+        <label for="loginPassword" class="form-label fw-medium">Password</label>
+        <input type="password" class="form-control form-control-lg" id="loginPassword" name="password" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter your password.</div>
+      </div>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-danger btn-lg mt-2 fw-bold rounded-pill shadow-sm">
+          Login
+        </button>
+      </div>
+      <p class="text-center mt-3 text-muted">
+        Don't have an account? <a href="/signup" class="text-decoration-none fw-medium">Sign up</a>
+      </p>
+    </form>
+  </div>
+</div>
